@@ -39,7 +39,8 @@ Password: admin123
 ⚙️ Langkah Instalasi Lokal
 Clone Repositori:
 - git clone https://github.com/herlina45/UAS_PW2_251011700828_HerlinaTriansah.git
-- Pindahkan ke Direktori Web Server:
+
+Pindahkan ke Direktori Web Server:
 - Pindahkan folder hasil klon ke folder htdocs/ (XAMPP) atau www/ (Laragon). Pastikan nama folder proyek adalah uas_251011700828_aset_barang.
 
 Import Database:
