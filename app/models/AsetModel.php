@@ -31,11 +31,11 @@ class AsetModel {
         $query = "SELECT id, kode_aset, nama_barang, kategori, jumlah, kondisi, foto, tgl_perolehan, created_at 
                   FROM " . $this->table_name;
 
-        // Jika keyword pencarian dikirimkan, tambahkan kondisi filter LIKE
+        // Jika keyword pencarian dikirimkan, gunakan placeholder unik untuk menghindari error HY093
         if (!empty($keyword)) {
-            $query .= " WHERE nama_barang LIKE :keyword 
-                        OR kategori LIKE :keyword 
-                        OR kode_aset LIKE :keyword";
+            $query .= " WHERE nama_barang LIKE :keyword_nama 
+                        OR kategori LIKE :keyword_kategori 
+                        OR kode_aset LIKE :keyword_kode";
         }
         
         $query .= " ORDER BY created_at DESC";
@@ -46,7 +46,10 @@ class AsetModel {
             if (!empty($keyword)) {
                 // Menambahkan tanda wildcard (%) untuk pencarian parsial
                 $search_term = "%" . $keyword . "%";
-                $stmt->bindParam(':keyword', $search_term);
+                // Mengikat setiap placeholder unik secara mandiri demi kompatibilitas native prepared statements
+                $stmt->bindParam(':keyword_nama', $search_term);
+                $stmt->bindParam(':keyword_kategori', $search_term);
+                $stmt->bindParam(':keyword_kode', $search_term);
             }
 
             $stmt->execute();

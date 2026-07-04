@@ -228,12 +228,6 @@
                                 <i class="bi bi-box-fill"></i> Kelola Aset
                             </a>
                         </li>
-                        <!-- Menu Tambah Aset Baru -->
-                        <li class="sidebar-item">
-                            <a href="index.php?page=aset&action=create" class="sidebar-link <?= (isset($_GET['page']) && $_GET['page'] === 'aset' && isset($_GET['action']) && $_GET['action'] === 'create') ? 'active' : ''; ?>">
-                                <i class="bi bi-plus-circle-fill"></i> Tambah Aset
-                            </a>
-                        </li>
                     </ul>
                 </nav>
             </div>
