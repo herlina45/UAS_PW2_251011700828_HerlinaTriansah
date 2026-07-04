@@ -224,13 +224,13 @@
                         </li>
                         <!-- Menu Kelola Aset Barang -->
                         <li class="sidebar-item">
-                            <a href="index.php?page=aset" class="sidebar-link <?= (isset($_GET['page']) && $_GET['page'] === 'aset' && $_GET['action'] !== 'create' && $_GET['action'] !== 'edit') ? 'active' : ''; ?>">
+                            <a href="index.php?page=aset" class="sidebar-link <?= (isset($_GET['page']) && $_GET['page'] === 'aset' && (!isset($_GET['action']) || ($_GET['action'] !== 'create' && $_GET['action'] !== 'edit'))) ? 'active' : ''; ?>">
                                 <i class="bi bi-box-fill"></i> Kelola Aset
                             </a>
                         </li>
                         <!-- Menu Tambah Aset Baru -->
                         <li class="sidebar-item">
-                            <a href="index.php?page=aset&action=create" class="sidebar-link <?= (isset($_GET['page']) && $_GET['page'] === 'aset' && $_GET['action'] === 'create') ? 'active' : ''; ?>">
+                            <a href="index.php?page=aset&action=create" class="sidebar-link <?= (isset($_GET['page']) && $_GET['page'] === 'aset' && isset($_GET['action']) && $_GET['action'] === 'create') ? 'active' : ''; ?>">
                                 <i class="bi bi-plus-circle-fill"></i> Tambah Aset
                             </a>
                         </li>
