@@ -5,12 +5,12 @@ Proyek ini dibangun sebagai tugas untuk Ujian Akhir Semester (UAS) Genap - Mata 
 
 👩‍💻 Identitas Mahasiswa
 
-Nama Lengkap: Herlina Triansah
-NIM: 251011700828
-Kelas: 02SIFE008
-Program Studi: Sistem Informasi
-Universitas: Universitas Pamulang (UNPAM)
-Dosen Pengampu: Samso Supriyatna, S.Kom., M.Kom.
+- Nama Lengkap: Herlina Triansah
+- NIM: 251011700828
+- Kelas: 02SIFE008
+- Program Studi: Sistem Informasi
+- Universitas: Universitas Pamulang (UNPAM)
+- Dosen Pengampu: Samso Supriyatna, S.Kom., M.Kom.
 
 🚀 Fitur Utama Sistem
 
@@ -25,16 +25,16 @@ Dosen Pengampu: Samso Supriyatna, S.Kom., M.Kom.
 
 🛠️ Tech Stack & Dependensi
 
-Core Language: PHP 8.3.10 / PHP Native (OOP & MVC)
-Database Driver: MySQL (PDO Connection with Prepared Statements)
-UI Framework: Bootstrap 5.3.3 & Bootstrap Icons (via CDN)
-Typography: Poppins (Google Fonts)
-Third-party Libs: FPDF v1.86 (diletakkan di folder libs/fpdf/)
+- Core Language: PHP 8.3.10 / PHP Native (OOP & MVC)
+- Database Driver: MySQL (PDO Connection with Prepared Statements)
+- UI Framework: Bootstrap 5.3.3 & Bootstrap Icons (via CDN)
+- Typography: Poppins (Google Fonts)
+- Third-party Libs: FPDF v1.86 (diletakkan di folder libs/fpdf/)
 
 💾 Akun Administrator Bawaan (Default Credentials)
 Untuk keperluan pengujian oleh dosen penguji, sistem telah diisi data akun admin bawaan melalui seeder database:
-Username: herlina45
-Password: admin123
+- Username: herlina45
+- Password: admin123
 
 ⚙️ Langkah Instalasi Lokal
 Clone Repositori:
