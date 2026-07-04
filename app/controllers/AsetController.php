@@ -51,7 +51,7 @@ class AsetController {
             $_SESSION['error_msg'] = "Gagal memuat data aset: " . $e->getMessage();
         }
 
-        $page_title = "Kelola Aset Barang - Strawberry Matcha";
+        $page_title = "Kelola Aset Barang - SIMBAR";
         
         // Merender view halaman utama daftar aset
         require_once 'app/views/layouts/header.php';
@@ -467,7 +467,8 @@ class AsetController {
                 ?>
                     <tr style="background-color: <?= $bgColor ?>;">
                         <td align="center"><?= $no++ ?></td>
-                        <td align="center">`<?= htmlspecialchars($row['kode_aset']) ?>`</td> <!-- Tanda petik agar teks kode aset tidak berubah format angka ilmiah -->
+                        <!-- Menggunakan mso-number-format agar Excel mengenali sebagai text tanpa memunculkan tanda petik fisik -->
+                        <td align="center" style="mso-number-format:'\@';"><?= htmlspecialchars($row['kode_aset']) ?></td>
                         <td><?= htmlspecialchars($row['nama_barang']) ?></td>
                         <td><?= htmlspecialchars($row['kategori']) ?></td>
                         <td align="center"><?= htmlspecialchars($row['jumlah']) ?></td>

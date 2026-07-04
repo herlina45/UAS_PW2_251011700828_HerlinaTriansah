@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrasi Akun - Strawberry Matcha</title>
+    <title>Registrasi Akun - SIMBAR</title>
     
     <!-- Google Font Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -118,7 +118,7 @@
                 <i class="bi bi-person-plus" style="font-size: 2.5rem; color: #C2185B;"></i>
             </div>
             <h1 class="brand-title">Registrasi Admin</h1>
-            <p class="brand-subtitle m-0">Sistem Informasi Aset Strawberry Matcha</p>
+            <p class="brand-subtitle m-0">Sistem Informasi Manajemen Barang (SIMBAR)</p>
         </div>
 
         <!-- Bagian Form Utama (Body) -->

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= isset($page_title) ? htmlspecialchars($page_title) : 'Sistem Informasi Aset - Strawberry Matcha'; ?></title>
+    <title><?= isset($page_title) ? htmlspecialchars($page_title) : 'Sistem Informasi Manajemen Barang - SIMBAR'; ?></title>
     
     <!-- Google Font Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -193,7 +193,7 @@
     <header class="mobile-header">
         <div class="d-flex align-items-center">
             <i class="bi bi-box-seam text-danger me-2" style="font-size: 1.5rem;"></i>
-            <span class="fw-bold text-success" style="font-size: 0.95rem;">Strawberry Matcha</span>
+            <span class="fw-bold text-success" style="font-size: 0.95rem;">SIMBAR</span>
         </div>
         <button class="btn btn-outline-success btn-sm border-2 rounded-3" type="button" onclick="toggleMobileSidebar()">
             <i class="bi bi-list fs-5"></i>
@@ -209,7 +209,7 @@
                     <div class="brand-icon">
                         <i class="bi bi-box-seam"></i>
                     </div>
-                    <h2 class="brand-text">Strawberry Matcha</h2>
+                    <h2 class="brand-text">SIMBAR</h2>
                     <p class="brand-desc">Sistem Informasi Aset Barang</p>
                 </div>
 

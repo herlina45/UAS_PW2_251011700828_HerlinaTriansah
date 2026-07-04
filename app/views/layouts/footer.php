@@ -5,7 +5,7 @@
     <footer class="text-center py-3 bg-white border-top mt-auto" style="border-color: var(--matcha-medium) !important;">
         <div class="container-fluid">
             <p class="m-0 text-secondary small">
-                &copy; <?= date('Y'); ?> <b>Strawberry Matcha SIASET</b> - Dikembangkan oleh 
+                &copy; <?= date('Y'); ?> <b>SIMBAR</b> - Dikembangkan oleh 
                 <span class="text-danger fw-semibold">Herlina Triansah</span> (NIM: 251011700828)
             </p>
             <p class="m-0 text-muted extra-small" style="font-size: 0.7rem;">
