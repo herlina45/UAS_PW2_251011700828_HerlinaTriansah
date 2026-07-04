@@ -22,10 +22,6 @@
                         Selamat datang kembali di Sistem Informasi Aset Barang. Mari kelola inventaris hari ini dengan mudah.
                     </p>
                 </div>
-                <!-- Ikon Hiasan Tema -->
-                <div class="d-none d-md-block fs-1">
-                    🍓 🍵
-                </div>
             </div>
         </div>
     </div>
