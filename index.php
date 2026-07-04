@@ -12,7 +12,10 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// 2. Memuat berkas konfigurasi database
+// 2. Mengunci Zona Waktu Aplikasi ke Asia/Jakarta (WIB / GMT+7)
+date_default_timezone_set('Asia/Jakarta');
+
+// 3. Memuat berkas konfigurasi database
 require_once 'config/database.php';
 
 try {
@@ -24,11 +27,11 @@ try {
     die("Gagal memuat sistem koneksi database: " . $e->getMessage());
 }
 
-// 3. Menangkap parameter routing dari URL
+// 4. Menangkap parameter routing dari URL
 $page = isset($_GET['page']) ? trim($_GET['page']) : 'dashboard';
 $action = isset($_GET['action']) ? trim($_GET['action']) : 'index';
 
-// 4. Jalur Routing Engine (Front Controller Switch Case)
+// 5. Jalur Routing Engine (Front Controller Switch Case)
 switch ($page) {
     case 'auth':
         // Memuat controller autentikasi
