@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrasi Akun - Strawberry Matcha</title>
+    <title><?= isset($page_title) ? htmlspecialchars($page_title) : 'Sistem Informasi Aset - Strawberry Matcha'; ?></title>
     
     <!-- Google Font Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,182 +17,245 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #FCE4EC 0%, #E8F5E9 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 0;
+        :root {
+            --matcha-dark: #2E7D32;
+            --matcha-medium: #81C784;
+            --matcha-light: #E8F5E9;
+            --strawberry-dark: #C2185B;
+            --strawberry-medium: #F06292;
+            --strawberry-light: #FCE4EC;
+            --bg-soft-grey: #FAFAFA;
         }
 
-        .register-card {
-            background-color: #FFFFFF;
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(194, 24, 91, 0.05);
-            overflow: hidden;
-            max-width: 460px;
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-soft-grey);
+            color: #333333;
+            overflow-x: hidden;
+        }
+
+        /* Layout Grid Sidebar dan Konten */
+        .dashboard-wrapper {
+            display: flex;
+            min-height: 100vh;
             width: 100%;
         }
 
-        .card-header-accent {
-            background-color: #FCE4EC;
-            border-bottom: 2px solid #E8F5E9;
-            padding: 2rem 2rem 1.2rem 2rem;
+        /* Sidebar Styling */
+        .sidebar {
+            width: 280px;
+            background-color: var(--matcha-light);
+            border-right: 2px solid var(--matcha-medium);
+            padding: 2rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .sidebar-brand {
             text-align: center;
+            margin-bottom: 2.5rem;
         }
 
-        .brand-title {
-            color: #C2185B; /* Strawberry Pink */
+        .brand-icon {
+            font-size: 2.5rem;
+            color: var(--strawberry-dark);
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .brand-text {
+            color: var(--strawberry-dark);
             font-weight: 700;
-            font-size: 1.4rem;
-            margin-bottom: 0.2rem;
+            font-size: 1.2rem;
             letter-spacing: -0.5px;
+            margin: 0;
         }
 
-        .brand-subtitle {
-            color: #2E7D32; /* Matcha Green */
-            font-size: 0.85rem;
+        .brand-desc {
+            color: var(--matcha-dark);
+            font-size: 0.8rem;
             font-weight: 500;
+            margin: 0;
         }
 
-        .form-control {
-            border-radius: 12px;
-            padding: 0.7rem 1rem;
-            border: 1.5px solid #E0E0E0;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
+        /* Menu List */
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
         }
 
-        .form-control:focus {
-            border-color: #81C784; /* Matcha Green Focus */
-            box-shadow: 0 0 0 0.25rem rgba(129, 199, 132, 0.15);
+        .sidebar-item {
+            margin-bottom: 0.75rem;
         }
 
-        .btn-matcha {
-            background-color: #81C784; /* Matcha Green Button */
-            color: #FFFFFF;
-            border: none;
-            border-radius: 12px;
-            padding: 0.8rem;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-        }
-
-        .btn-matcha:hover {
-            background-color: #66BB6A;
-            transform: translateY(-1px);
-        }
-
-        .btn-matcha:active {
-            transform: translateY(1px);
-        }
-
-        .login-link {
-            color: #C2185B;
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            padding: 0.85rem 1.25rem;
+            color: var(--matcha-dark);
             text-decoration: none;
-            font-weight: 600;
-        }
-
-        .login-link:hover {
-            text-decoration: underline;
-            color: #AD1457;
-        }
-
-        .alert-custom {
+            font-weight: 500;
+            font-size: 0.95rem;
             border-radius: 12px;
-            font-size: 0.85rem;
-            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-link i {
+            font-size: 1.2rem;
+            margin-right: 0.85rem;
+        }
+
+        /* Link Hover & Active (Strawberry Matcha Blend) */
+        .sidebar-link:hover {
+            background-color: var(--matcha-medium);
+            color: #FFFFFF !important;
+        }
+
+        .sidebar-link.active {
+            background-color: var(--strawberry-light);
+            color: var(--strawberry-dark) !important;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(194, 24, 91, 0.08);
+        }
+
+        /* Admin Info Section */
+        .admin-info {
+            background-color: #FFFFFF;
+            border-radius: 16px;
+            padding: 1rem;
+            border: 1px solid var(--matcha-medium);
+            margin-top: 2rem;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.03);
+        }
+
+        .admin-avatar {
+            font-size: 1.8rem;
+            color: var(--strawberry-dark);
+            background-color: var(--strawberry-light);
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            flex-grow: 1;
+            padding: 2.5rem;
+            overflow-y: auto;
+            max-width: calc(100% - 280px);
+        }
+
+        /* Header Seluler (Mobile Header Navbar) */
+        .mobile-header {
+            display: none;
+            background-color: var(--matcha-light);
+            border-bottom: 2px solid var(--matcha-medium);
+            padding: 0.85rem 1.25rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Penyesuaian Responsif Layar Kecil */
+        @media (max-width: 991.98px) {
+            .dashboard-wrapper {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                display: none; /* Disembunyikan, dikendalikan via JS offcanvas/collapse jika mau, atau simpelnya stack layout */
+                border-right: none;
+                border-bottom: 2px solid var(--matcha-medium);
+            }
+            .sidebar.show {
+                display: flex;
+            }
+            .main-content {
+                max-width: 100%;
+                padding: 1.5rem;
+            }
+            .mobile-header {
+                display: flex;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="register-card p-0 mx-3">
-        <!-- Bagian Atas Card (Header) -->
-        <div class="card-header-accent">
-            <div class="mb-2">
-                <i class="bi bi-person-plus" style="font-size: 2.5rem; color: #C2185B;"></i>
-            </div>
-            <h1 class="brand-title">Registrasi Admin</h1>
-            <p class="brand-subtitle m-0">Sistem Informasi Aset Strawberry Matcha</p>
+    <!-- Header Responsif untuk Tampilan Seluler (Mobile) -->
+    <header class="mobile-header">
+        <div class="d-flex align-items-center">
+            <i class="bi bi-box-seam text-danger me-2" style="font-size: 1.5rem;"></i>
+            <span class="fw-bold text-success" style="font-size: 0.95rem;">Strawberry Matcha</span>
         </div>
+        <button class="btn btn-outline-success btn-sm border-2 rounded-3" type="button" onclick="toggleMobileSidebar()">
+            <i class="bi bi-list fs-5"></i>
+        </button>
+    </header>
 
-        <!-- Bagian Form Utama (Body) -->
-        <div class="p-4 pt-3">
-            
-            <?php if (isset($_SESSION['error_msg'])): ?>
-                <div class="alert alert-danger alert-custom alert-dismissible fade show mb-3" role="alert">
-                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
-                    <?= htmlspecialchars($_SESSION['error_msg']); ?>
-                    <button type="button" class="btn-close" data-bs-alert aria-label="Close" onclick="this.parentElement.style.display='none';"></button>
-                </div>
-                <?php unset($_SESSION['error_msg']); ?>
-            <?php endif; ?>
-
-            <form action="index.php?page=auth&action=register" method="POST" autocomplete="off">
-                
-                <!-- Input Nama Lengkap -->
-                <div class="mb-3">
-                    <label for="nama_lengkap" class="form-label small text-secondary fw-medium">Nama Lengkap</label>
-                    <div class="input-group">
-                        <span class="input-group-text bg-light border-end-0" style="border-radius: 12px 0 0 12px; border: 1.5px solid #E0E0E0;">
-                            <i class="bi bi-card-text text-secondary"></i>
-                        </span>
-                        <input type="text" class="form-control border-start-0" id="nama_lengkap" name="nama_lengkap" placeholder="Masukkan nama lengkap" style="border-radius: 0 12px 12px 0;" required>
+    <div class="dashboard-wrapper">
+        <!-- Bilah Samping (Sidebar Navigasi) -->
+        <aside class="sidebar" id="sidebarContainer">
+            <div>
+                <!-- Brand Aplikasi -->
+                <div class="sidebar-brand">
+                    <div class="brand-icon">
+                        <i class="bi bi-box-seam"></i>
                     </div>
+                    <h2 class="brand-text">Strawberry Matcha</h2>
+                    <p class="brand-desc">Sistem Informasi Aset Barang</p>
                 </div>
 
-                <!-- Input Username -->
-                <div class="mb-3">
-                    <label for="username" class="form-label small text-secondary fw-medium">Username</label>
-                    <div class="input-group">
-                        <span class="input-group-text bg-light border-end-0" style="border-radius: 12px 0 0 12px; border: 1.5px solid #E0E0E0;">
-                            <i class="bi bi-person text-secondary"></i>
-                        </span>
-                        <input type="text" class="form-control border-start-0" id="username" name="username" placeholder="Buat username baru" style="border-radius: 0 12px 12px 0;" required>
-                    </div>
-                </div>
-
-                <!-- Input Password -->
-                <div class="mb-3">
-                    <label for="password" class="form-label small text-secondary fw-medium">Password</label>
-                    <div class="input-group">
-                        <span class="input-group-text bg-light border-end-0" style="border-radius: 12px 0 0 12px; border: 1.5px solid #E0E0E0;">
-                            <i class="bi bi-lock text-secondary"></i>
-                        </span>
-                        <input type="password" class="form-control border-start-0" id="password" name="password" placeholder="Buat password aman" style="border-radius: 0 12px 12px 0;" required>
-                    </div>
-                </div>
-
-                <!-- Input Konfirmasi Password -->
-                <div class="mb-4">
-                    <label for="konfirmasi_password" class="form-label small text-secondary fw-medium">Konfirmasi Password</label>
-                    <div class="input-group">
-                        <span class="input-group-text bg-light border-end-0" style="border-radius: 12px 0 0 12px; border: 1.5px solid #E0E0E0;">
-                            <i class="bi bi-shield-lock text-secondary"></i>
-                        </span>
-                        <input type="password" class="form-control border-start-0" id="konfirmasi_password" name="konfirmasi_password" placeholder="Ketik ulang password" style="border-radius: 0 12px 12px 0;" required>
-                    </div>
-                </div>
-
-                <!-- Tombol Submit Register -->
-                <button type="submit" class="btn btn-matcha w-100 mb-3 shadow-sm">
-                    <i class="bi bi-person-check me-2"></i> Daftar Akun Baru
-                </button>
-            </form>
-
-            <!-- Tautan Kembali ke Login -->
-            <div class="text-center mt-2">
-                <p class="small text-secondary mb-1">Sudah memiliki akun admin?</p>
-                <a href="index.php?page=auth&action=login" class="login-link small"><i class="bi bi-arrow-left"></i> Kembali ke Login</a>
+                <!-- Menu Navigasi Utama -->
+                <nav>
+                    <ul class="sidebar-menu">
+                        <!-- Menu Dashboard -->
+                        <li class="sidebar-item">
+                            <a href="index.php?page=dashboard" class="sidebar-link <?= (!isset($_GET['page']) || $_GET['page'] === 'dashboard') ? 'active' : ''; ?>">
+                                <i class="bi bi-grid-1x2-fill"></i> Dashboard
+                            </a>
+                        </li>
+                        <!-- Menu Kelola Aset Barang -->
+                        <li class="sidebar-item">
+                            <a href="index.php?page=aset" class="sidebar-link <?= (isset($_GET['page']) && $_GET['page'] === 'aset' && $_GET['action'] !== 'create' && $_GET['action'] !== 'edit') ? 'active' : ''; ?>">
+                                <i class="bi bi-box-fill"></i> Kelola Aset
+                            </a>
+                        </li>
+                        <!-- Menu Tambah Aset Baru -->
+                        <li class="sidebar-item">
+                            <a href="index.php?page=aset&action=create" class="sidebar-link <?= (isset($_GET['page']) && $_GET['page'] === 'aset' && $_GET['action'] === 'create') ? 'active' : ''; ?>">
+                                <i class="bi bi-plus-circle-fill"></i> Tambah Aset
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-        </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+            <!-- Info Profil Admin & Tombol Keluar -->
+            <div>
+                <div class="admin-info d-flex align-items-center mb-3">
+                    <div class="admin-avatar me-2 shadow-sm">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <div class="overflow-hidden">
+                        <h6 class="m-0 fw-bold text-dark text-truncate small"><?= htmlspecialchars($_SESSION['nama_lengkap']); ?></h6>
+                        <span class="text-secondary" style="font-size: 0.75rem;">Administrator</span>
+                    </div>
+                </div>
+
+                <!-- Tombol Logout Keluar -->
+                <a href="index.php?page=auth&action=logout" class="btn btn-outline-danger w-100 rounded-3 py-2 text-start fw-semibold small" onclick="return confirm('Apakah Anda yakin ingin keluar dari sistem?');">
+                    <i class="bi bi-box-arrow-left me-2"></i> Keluar Sistem
+                </a>
+            </div>
+        </aside>
+
+        <!-- Area Konten Utama Halaman -->
+        <main class="main-content">
